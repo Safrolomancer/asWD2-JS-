@@ -1,5 +1,25 @@
+/*=========== - Text - Font - ===================*/
+h1 {
+    color: #D1C899;
+}
+
+h2 {
+    color: #D1C899;
+}
+
+p {
+    color: #D1C899;
+}
+
+td {
+    color: #D1C899;
+}
+
+/*============= - Header - ======================*/
+
 header {
-    border: 2px solid green;
+    border: 3px solid #124646;
+    background-color: #0a1d1d;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -10,12 +30,14 @@ header {
 }
 
 nav {
-    border: 2px solid black;
+    
     /* Do not change. Take all space fro left*/
     margin-left: auto;
     display: flex;
     gap: 20px;
 }
+
+/*=============== - Body - ====================*/
 
 body {
     margin: 0;
@@ -34,19 +56,30 @@ body {
     background-repeat: no-repeat;
     Do not change ; make view point = hight of page window 8
     min-height: 100vh; */
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    /*Do not change. In combination with 
+    body - display: flex; 
+    flex-direction: column;
+    keep footer always on bottom*/
+    flex: 1;
 }
 
 /* ======== Section - 1 - index.html =======*/
 
 #homeBarotrauma {
-    border: 2px solid red;
+    
     text-align: center;
     margin-bottom: 5px;
 }
 
 /* ======== Section - 2 - index.html =======*/
 #crew {
-    border: 2px solid pink;
+    
     text-align: center;
     justify-content: center;
     margin-bottom: 5px;
@@ -54,18 +87,22 @@ body {
 
 .slider {
     display: flex;
-    border: 2px solid blue;
+    
 }
 
 /* ======== Section - 3 - index.html =======*/
 
 #warning {
-    border: 2px solid red;
+    
     text-align: center;
+    margin-bottom: 5px;
 }
 
 /*=================FOOTER=======================*/
 
 footer {
     text-align: center;
+    border: 3px solid #124646;
+    padding: 20px;
+    background-color: #0a1d1d;
 }
