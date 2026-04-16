@@ -1,0 +1,71 @@
+header {
+    border: 2px solid green;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    /* Do not change. Not breaking border for nav */
+    box-sizing: border-box;
+
+}
+
+nav {
+    border: 2px solid black;
+    /* Do not change. Take all space fro left*/
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #071314;
+    background-image:
+        /*lines direction to the right*/
+        linear-gradient(rgba(80, 140, 160, 0.12) 1px, transparent 1px),
+        /*lines direction to down*/
+        linear-gradient(90deg, rgba(80, 140, 160, 0.12) 1px, transparent 1px);
+    background-size: 50px 50px;
+
+    /* background-image: url("/images/backphoto.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    Do not change ; make view point = hight of page window 8
+    min-height: 100vh; */
+}
+
+/* ======== Section - 1 - index.html =======*/
+
+#homeBarotrauma {
+    border: 2px solid red;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+/* ======== Section - 2 - index.html =======*/
+#crew {
+    border: 2px solid pink;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.slider {
+    display: flex;
+    border: 2px solid blue;
+}
+
+/* ======== Section - 3 - index.html =======*/
+
+#warning {
+    border: 2px solid red;
+    text-align: center;
+}
+
+/*=================FOOTER=======================*/
+
+footer {
+    text-align: center;
+}
