@@ -41,19 +41,24 @@ hide.addEventListener("click", function (){
 
 const crew = [    //have created array for nickanmes, mages and roles 
 { 
-    "nickname": "Safrolomancer",
-    "role": "Captain",
-    "image": "/images/logo.png"
-},
-{ 
     "nickname": "ChiWaWa",
-    "role": "Medic",
-    "image": "/images/logo.png"
+    "role": "Medic-Clown",
+    "image": "/images/ChiWaWa.png",
+    "info": "A quack doctor who starts crying when he runs out of morphine. He only treats patients when he's in the mood."
 },
+
+{ 
+    "nickname": "Safrolomancer",
+    "role": "Coalition Admiral",
+    "image": "/images/Safrolo.png",
+    "info": "The team captain is mentally unstable. He starts to panic when he doesn't have a firearm with him."
+},
+
 { 
     "nickname": "Registem",
-    "role": "Engineer",
-    "image": "/images/logo.png"
+    "role": "Veteran Coalition Mechanic",
+    "image": "/images/Registem.png",
+    "info": "A mechanic who serves as a dispatcher, medic, captain, engineer, security officer, pharmacist, electrician, prisoner, and assistant. Earns 4 credits for missions worth 9,000 credits"
 },
 ];
 

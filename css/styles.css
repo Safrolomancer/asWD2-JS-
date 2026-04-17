@@ -7,13 +7,17 @@ h2 {
     color: #D1C899;
 }
 
-p {
-    color: #D1C899;
+h3{
+    color: #33649d;
+    font-size: 25px;
 }
 
-td {
-    color: #D1C899;
+p {
+    color: #12537e;
+    font-size: 20px;
 }
+
+
 
 /*============= - Header - ======================*/
 
@@ -30,7 +34,7 @@ header {
 }
 
 nav {
-    
+
     /* Do not change. Take all space fro left*/
     margin-left: auto;
     display: flex;
@@ -72,77 +76,94 @@ main {
 /* ===================== Section - 1 - index.html ====================*/
 
 #homeBarotrauma {
-    
+
     text-align: center;
     margin-bottom: 5px;
 }
+
 /* do not change [ UI ] */
-#typeEffect{
+#typeEffect {
     margin-left: 5%;
     margin-right: 5%;
 }
 
 /* ===================== Section - 2 - index.html ====================*/
 #crew {
-    
+
     text-align: center;
     justify-content: center;
     margin-bottom: 5px;
 }
 
 .crewCard {
-        flex: 0 0 250px;
-        margin: 10px;
-        border: 1px solid #2a4a47;
-        box-shadow: 2px 2px 6px 0px rgba(39, 71, 79, 0.3);
-        transition: 0.5s;
+    flex: 0 0 250px;
+    margin: 10px;
+    border: 3px solid #2a4a47;
+    box-shadow: 5px 5px 6px 0px rgba(39, 71, 79, 0.3);
+    transition: 0.5s;
+    background-color: rgb(20, 34, 34);
 }
 
 .crewCard img {
     max-width: 100%;
     margin: 0;
-  }
+}
 
-  .crewCard p:nth-of-type(1) {
+.crewCard p:nth-of-type(1) {
     padding-bottom: 1em;
-    border-bottom: solid lightgray 1px;
-  }
+    border-bottom: solid lightgray 4px;
+}
 
-  .crewCard p:nth-of-type(2) {
-    color: gray;
-  }
+.crewCard p:nth-of-type(2) {
+    color: rgb(92, 111, 174);
+}
 
-  .crewCard:hover {
-    transform: scale(1.1);
-  }
+.crewCard:hover {
+    transform: scale(1.1); /* adjust if changing zoom of cards when pointing*/
+}
+
+.cardsUI {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.CREW{
+    color: #0dc71f;
+}
+
 
 /* ===================== Section - 3 - index.html ====================*/
 
 #warning {
-    
+
     text-align: center;
     margin-bottom: 5px;
 }
 
-#textWarning{
+#textWarning {
     margin-left: 5%;
     margin-right: 5%;
 }
 
 /* ! DO NOT TOUCH ! Related to JS section 3 accordion.  */
 .content {
-    max-height: 0; /* because now we can not see the text cause the hight is 0 */
-    overflow: hidden; /* cutting what didnt feet */ 
-    transition: max-height 0.5s ease; /* that why I have smoothy effect */
+    max-height: 0;
+    /* because now we can not see the text cause the hight is 0 */
+    overflow: hidden;
+    /* cutting what didnt feet */
+    transition: max-height 0.5s ease;
+    /* that why I have smoothy effect */
     background: #1f3738;
     border-radius: 8px;
     padding: 0 10px;
-  }
+}
 
-  .content.open {
+.content.open {
     max-height: 200px;
     padding: 10px;
-  }
+}
 
 
 /*=================FOOTER=======================*/

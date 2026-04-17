@@ -32,7 +32,7 @@
         <!--======================SECTION 2=============================-->
         <!-- 2 [ SLIDER ] ; 2nd section of page  -->
         <section id="crew">
-            <h2>CREW</h2>
+            <h2 class="CREW">CREW</h2>
 
             <div id="crewoutput"></div> <!-- Output for my cards from JS -->
 
@@ -40,13 +40,14 @@
             <script id="tookWeek6" type="text/x-handlebars-template">
 
             <div class="profile">
-                <div class="UIcrew">
+                <div class="UIcrew cardsUI"> <!-- 2 classes-->
                     {{#each this}} <!-- take each element from existing array [ Not adjustable ]-->
                     <div class="crewCard">
                         <img src="{{image}}" alt="{{name}}">
                         <div class="cardContent">
-                            <h3>{{nickname}}</h3>
+                            <h3><b>{{nickname}}</b></h3>
                             <p>{{role}}</p>
+                            <p class="cardunderinfotext">{{info}}</p>
                         </div>
                     </div>
                     {{/each}} <!-- Stop Running array -->
