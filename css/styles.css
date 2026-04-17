@@ -37,7 +37,7 @@ nav {
     gap: 20px;
 }
 
-/*=============== - Body - ====================*/
+/*============================ - Body - =================================*/
 
 body {
     margin: 0;
@@ -69,15 +69,20 @@ main {
     flex: 1;
 }
 
-/* ======== Section - 1 - index.html =======*/
+/* ===================== Section - 1 - index.html ====================*/
 
 #homeBarotrauma {
     
     text-align: center;
     margin-bottom: 5px;
 }
+/* do not change [ UI ] */
+#typeEffect{
+    margin-left: 5%;
+    margin-right: 5%;
+}
 
-/* ======== Section - 2 - index.html =======*/
+/* ===================== Section - 2 - index.html ====================*/
 #crew {
     
     text-align: center;
@@ -90,13 +95,34 @@ main {
     
 }
 
-/* ======== Section - 3 - index.html =======*/
+/* ===================== Section - 3 - index.html ====================*/
 
 #warning {
     
     text-align: center;
     margin-bottom: 5px;
 }
+
+#textWarning{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/* ! DO NOT TOUCH ! Related to JS section 3 accordion.  */
+.content {
+    max-height: 0; /* because now we can not see the text cause the hight is 0 */
+    overflow: hidden; /* cutting what didnt feet */ 
+    transition: max-height 0.5s ease; /* that why I have smoothy effect */
+    background: #1f3738;
+    border-radius: 8px;
+    padding: 0 10px;
+  }
+
+  .content.open {
+    max-height: 200px;
+    padding: 10px;
+  }
+
 
 /*=================FOOTER=======================*/
 
@@ -105,4 +131,5 @@ footer {
     border: 3px solid #124646;
     padding: 20px;
     background-color: #0a1d1d;
+    margin-top: 15px;
 }

@@ -25,7 +25,7 @@
         <!-- 1 General info of web content ; 1st section of page -->
         <section id="homeBarotrauma">
             <h1>Barotrauma</h1>
-            <h2 id="typeEfect"></h2>
+            <h2 id="typeEffect"></h2>
             <p></p>
         </section>
 
@@ -94,10 +94,22 @@
         <!-- 3 Waning section ; 3rd section of page -->
         <section id="warning">
 
-            <h1>! WARNING !</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt, laboriosam repellat. Dolor, eveniet
-                dolorem nihil blanditiis itaque corporis possimus temporibus accusamus nobis dolore in. Vitae error
-                adipisci doloremque officiis! Ex.</p>
+            <div class="infoHideShow">
+                <h1>! WARNING !</h1>
+
+                <div id="textWarning" class="content">
+                    <p>Life on Europa is not easy. If you hear strange noises outside 
+                        the submarine, do not panic — it is probably just a monster, a leak, or 
+                        your captain making another bad decision. Stay calm, fix the reactor, and 
+                        try not to drown.</p>
+                </div>
+
+                <div class="buttons">
+                    <button id="showButton">Show</button>
+                    <button id="hideButton">Hide</button>
+                </div>
+
+            </div>
         </section>
 
     </main>

@@ -1,0 +1,7 @@
+Question 1 
+What is the difference to my max-height and display: none in Section 3 index.html for Accordion?
+If anyway when I declare transition: max-height 0.0s ease;  It doesnt make the function smoothy.
+It is opening good, but closing with some freeze in the middle.
+
+
+Question 2
