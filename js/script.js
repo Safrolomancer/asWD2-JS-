@@ -15,7 +15,6 @@ function typeText() {
 typeText(); // call my function. Because before we only declared but never called
 
 // ============================================================================
-
 // =========================== Section 3 index.html =========== Accordion for Warning================
 // As a guidence I have been using other source. Reference provided to follow fairnes rules
 // Reference: https://itchief.ru/javascript/accordion
@@ -24,7 +23,6 @@ let show = document.getElementById("showButton");
 // I am not declearing smth new, I say to fing alredy existing 
 let hide = document.getElementById("hideButton");
 let textWarning = document.getElementById("textWarning");
-
 
 // I had a id "textWarning" and I say to add class "open" o my class "content"
 // in my div. So and in css I created format for "open" 
@@ -38,3 +36,31 @@ hide.addEventListener("click", function (){
     textWarning.classList.remove("open");
     //action
 });
+// ============================================================================
+// =========================== Section 2 index.html =========== ARRAY for Crew Cards================
+
+const crew = [    //have created array for nickanmes, mages and roles 
+{ 
+    "nickname": "Safrolomancer",
+    "role": "Captain",
+    "image": "/images/logo.png"
+},
+{ 
+    "nickname": "ChiWaWa",
+    "role": "Medic",
+    "image": "/images/logo.png"
+},
+{ 
+    "nickname": "Registem",
+    "role": "Engineer",
+    "image": "/images/logo.png"
+},
+];
+
+// declare "source" as find template by id and take content as line
+const source = document.getElementById("tookWeek6").innerHTML // allow to change HTML [ .innerHTML ]
+// Create my text in function that can be called
+const template = Handlebars.compile(source);
+const act = template(crew); // getting my array "Crew" and put in html
+
+document.getElementById("crewoutput").innerHTML = act; // deployment for my HTMKL

@@ -32,62 +32,27 @@
         <!--======================SECTION 2=============================-->
         <!-- 2 [ SLIDER ] ; 2nd section of page  -->
         <section id="crew">
-            <h2>Crew</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, laborum, odio quas eius, sit tempora
-                repudiandae recusandae dicta dolore eaque nesciunt. Natus rem nihil incidunt magnam aperiam delectus
-                alias ab?</p>
+            <h2>CREW</h2>
 
-            <div class="slider">
-                <table>
-                    <tr>
-                        <td>Nickname:</td>
-                        <td>Safrolomancer</td>
-                    </tr>
-                    <tr>
-                        <td>Role:</td>
-                        <td>Captain</td>
-                    </tr>
-                    <tr>
-                        <td>Character:</td>
-                        <td>Keen Eye</td>
-                    </tr>
-                </table>
+            <div id="crewoutput"></div> <!-- Output for my cards from JS -->
+
+            <!-- Container for my Template  // Took it from practical Week 6-->
+            <script id="tookWeek6" type="text/x-handlebars-template">
+
+            <div class="profile">
+                <div class="UIcrew">
+                    {{#each this}} <!-- take each element from existing array [ Not adjustable ]-->
+                    <div class="crewCard">
+                        <img src="{{image}}" alt="{{name}}">
+                        <div class="cardContent">
+                            <h3>{{nickname}}</h3>
+                            <p>{{role}}</p>
+                        </div>
+                    </div>
+                    {{/each}} <!-- Stop Running array -->
+                </div>
             </div>
-
-            <div class="slider">
-                <table>
-                    <tr>
-                        <td>Nickname:</td>
-                        <td>Safrolomancer</td>
-                    </tr>
-                    <tr>
-                        <td>Role:</td>
-                        <td>Captain</td>
-                    </tr>
-                    <tr>
-                        <td>Character:</td>
-                        <td>Keen Eye</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="slider">
-                <table>
-                    <tr>
-                        <td>Nickname:</td>
-                        <td>Safrolomancer</td>
-                    </tr>
-                    <tr>
-                        <td>Role:</td>
-                        <td>Captain</td>
-                    </tr>
-                    <tr>
-                        <td>Character:</td>
-                        <td>Keen Eye</td>
-                    </tr>
-                </table>
-            </div>
-
+            </script>
         </section>
 
         <!--======================SECTION 3=============================-->
@@ -98,9 +63,9 @@
                 <h1>! WARNING !</h1>
 
                 <div id="textWarning" class="content">
-                    <p>Life on Europa is not easy. If you hear strange noises outside 
-                        the submarine, do not panic — it is probably just a monster, a leak, or 
-                        your captain making another bad decision. Stay calm, fix the reactor, and 
+                    <p>Life on Europa is not easy. If you hear strange noises outside
+                        the submarine, do not panic — it is probably just a monster, a leak, or
+                        your captain making another bad decision. Stay calm, fix the reactor, and
                         try not to drown.</p>
                 </div>
 
@@ -117,7 +82,9 @@
     <footer>
         <p>Safrolomancer | github | JavaScript Assignment Matvii Krylov 20118691</p>
     </footer>
-    <script src="/js/script.js"></script>
+    <!-- Referenced to [ Week 6 ]  Lab number 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
