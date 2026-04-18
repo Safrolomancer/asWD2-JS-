@@ -18,39 +18,38 @@ p {
     font-weight: bold;
 }
 
-
-
 /*============= - Header - ======================*/
-
 header {
     border: 3px solid #124646;
     background-color: #0a1d1d;
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: px;
     width: 100%;
     /* Do not change. Not breaking border for nav */
     box-sizing: border-box;
-
+    /*Why do I have infinit amount of phtos here?
+    background-image: url(/images/updHeader.jpeg);*/
+    background-image: url(/images/images.jpeg);
 }
 
 nav {
-
     /* Do not change. Take all space fro left*/
     margin-left: auto;
     display: flex;
     gap: 20px;
 }
+
+/* Adjust here if I need to change the size of header, because now it is limited only by width of photo*/
+.navPhoto{
+    width: 20%;  
+}
 /*============= - Navigation buttons - ======================*/
-
-.navigation {
-    border-bottom-color: red !important;
-    }
-
 .navigation {
         color: rgb(29, 121, 89);
         font-weight: bold;
         font-size: 22px;
+        padding-right: 10px;
         }
 
  .navigation:hover {
@@ -59,9 +58,7 @@ nav {
             border-radius: 0.28571429rem 0.28571429rem 0 0 !important;
             }
 
-
 /*============================ - Body - =================================*/
-
 body {
     margin: 0;
     min-height: 100vh;
@@ -93,7 +90,6 @@ main {
 }
 
 /* ===================== Section - 1 - index.html ====================*/
-
 #homeBarotrauma {
 
     text-align: center;
@@ -152,9 +148,7 @@ main {
     color: #0dc71f;
 }
 
-
 /* ===================== Section - 3 - index.html ====================*/
-
 #warning {
 
     text-align: center;
@@ -184,9 +178,22 @@ main {
     padding: 10px;
 }
 
+/*=================Warning Buttons======================*/
+  
+  .warningButton {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #1f3738;
+    color: rgb(12, 177, 116);
+  }
+  
+  .buttons{
+    padding-top: 13px;
+  }
+
+
 
 /*=================FOOTER=======================*/
-
 footer {
     text-align: center;
     border: 3px solid #124646;

@@ -5,3 +5,6 @@ It is opening good, but closing with some freeze in the middle.
 
 
 Question 2
+
+Source: css - header section. 
+Why do I have infinit photos in header, they are repeating after each other without any reasons. Other photos just appearing once.
