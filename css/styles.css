@@ -13,8 +13,9 @@ h3{
 }
 
 p {
-    color: #12537e;
+    color: rgb(29, 121, 89);
     font-size: 20px;
+    font-weight: bold;
 }
 
 
@@ -40,6 +41,24 @@ nav {
     display: flex;
     gap: 20px;
 }
+/*============= - Navigation buttons - ======================*/
+
+.navigation {
+    border-bottom-color: red !important;
+    }
+
+.navigation {
+        color: rgb(29, 121, 89);
+        font-weight: bold;
+        font-size: 22px;
+        }
+
+ .navigation:hover {
+            background-color: rgba(45, 69, 61, 0.646) !important;
+            color: rgb(12, 111, 73) !important;
+            border-radius: 0.28571429rem 0.28571429rem 0 0 !important;
+            }
+
 
 /*============================ - Body - =================================*/
 
