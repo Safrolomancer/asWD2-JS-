@@ -1,20 +1,17 @@
-
 /*=========== - Text - Font - ===================*/
 /* ===================== ALL PAGES - Colours and reset ===================== */
 :root {
-    /* I put main colors here because now I can change all page mood from one place */
-    --os-blue: #0000aa;
-    --os-cyan: #00aaaa;
-    --os-yellow: #ffff55;
-    --os-white: #ffffff;
-    --os-black: #050505;
-    --os-green: #00aa00;
-    --os-paper: #eeeeee;
-    --os-shadow: #222222;
+    --os-blue: #163f4a;
+    --os-cyan: #071314;
+    --os-yellow: #d1c899;
+    --os-white: #b8c7c8;
+    --os-black: #020808;
+    --os-green: #0dc71f;
+    --os-paper: #142222;
+    --os-shadow: #2a4a47;
 }
 
 * {
-    /* so border will not break size of blocks when I add padding */
     box-sizing: border-box;
 }
 
@@ -24,7 +21,6 @@ body {
     margin: 0;
     min-height: 100vh;
     background-color: var(--os-cyan);
-    /* this grid is for old computer feeling, not for real layout */
     background-image:
         /* lines direction to the right */
         linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
@@ -40,7 +36,6 @@ body {
     min-height: 100vh; */
 
     color: var(--os-black);
-    /* monospace because I want it to look like old system/terminal */
     font-family: "Courier New", Courier, monospace;
     display: flex;
     flex-direction: column;
@@ -75,12 +70,10 @@ header {
     gap: 14px;
     padding: 8px;
     width: 100%;
-    /* header is shared between all pages, so changing here changes all 3 pages */
     /* Do not change. Not breaking border for nav */
 
     /*Why do I have infinit amount of phtos here?
-    background-image: url("../images/updHeader.jpeg");
-    Answer: background images repeat by default. Here I removed it for TempleOS style. */
+    background-image: url("../images/updHeader.jpeg"); */
 }
 
 nav {
@@ -103,7 +96,6 @@ nav {
 
 /*============= - Navigation buttons - ======================*/
 .navigation {
-    /* navigation looks like system buttons, not usual links */
     color: var(--os-white);
     background-color: var(--os-cyan);
     border: 3px solid var(--os-white);
@@ -150,7 +142,6 @@ footer p {
 #reactorCheck,
 #crew,
 #warning {
-    /* this makes my sections look like windows without changing HTML yet */
     text-align: center;
     margin: 22px 0;
     padding: 20px;
@@ -164,7 +155,6 @@ footer p {
 #reactorCheck::before,
 #crew::before,
 #warning::before {
-    /* fake title bar for each section, just with css */
     display: block;
     margin: -20px -20px 16px;
     padding: 7px 10px;
@@ -194,7 +184,6 @@ footer p {
 /* do not change [ UI ] */
 /* ===================== index.html - Section 1 typeText from JS ===================== */
 #typeEffect {
-    /* this is place where JS typing looks like terminal output */
     min-height: 120px;
     margin: 12px 0;
     padding: 14px;
@@ -207,7 +196,6 @@ footer p {
 /* ===================== Section - 2 - REACTOR - index.html ====================*/
 /* ===================== index.html - Section 2 Reactor Check from JS ===================== */
 .reactorMeter {
-    /* visual place for reactor power from JS */
     width: 100%;
     height: 30px;
     margin: 15px auto;
@@ -242,7 +230,6 @@ footer p {
 /* ===================== Section - 3 - index.html ====================*/
 /* ===================== index.html - Section 3 Crew Cards from Handlebars ===================== */
 .cardsUI {
-    /* flex here because crew cards need to go next line on small screen */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -331,7 +318,6 @@ footer p {
 
 /* ===================== ALL PAGES - Mobile layout ===================== */
 @media (max-width: 700px) {
-    /* small screen fixes, because header buttons become too wide on phone */
     header {
         justify-content: center;
         flex-wrap: wrap;
