@@ -56,7 +56,7 @@
                 <div class="UIcrew cardsUI"> <!-- 2 classes-->
                     {{#each this}} <!-- take each element from existing array [ Not adjustable ]-->
                     <div class="crewCard">
-                        <img src="{{image}}" alt="{{name}}">
+                        <img src="{{image}}" alt="{{nickname}}">
                         <div class="cardContent">
                             <h3><b>{{nickname}}</b></h3>
                             <p>{{role}}</p>
@@ -78,14 +78,14 @@
 
                 <div id="textWarning" class="content">
                     <p>Life on Europa is not easy. If you hear strange noises outside
-                        the submarine, do not panic — it is probably just a monster, a leak, or
+                        the submarine, do not panic - it is probably just a monster, a leak, or
                         your captain making another bad decision. Stay calm, fix the reactor, and
                         try not to drown.</p>
                 </div>
 
                 <div class="buttons">
-                    <button class="warningButton" id="showButton">Show</button>
-                    <button class="warningButton" id="hideButton">Hide</button>
+                    <button class="warningButton" id="showButton" type="button">Show</button>
+                    <button class="warningButton" id="hideButton" type="button">Hide</button>
                 </div>
 
             </div>
