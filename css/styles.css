@@ -1,74 +1,36 @@
+
 /*=========== - Text - Font - ===================*/
-h1 {
-    color: #D1C899;
+/* ===================== ALL PAGES - Colours and reset ===================== */
+:root {
+    /* I put main colors here because now I can change all page mood from one place */
+    --os-blue: #0000aa;
+    --os-cyan: #00aaaa;
+    --os-yellow: #ffff55;
+    --os-white: #ffffff;
+    --os-black: #050505;
+    --os-green: #00aa00;
+    --os-paper: #eeeeee;
+    --os-shadow: #222222;
 }
 
-h2 {
-    color: #D1C899;
-}
-
-h3{
-    color: #33649d;
-    font-size: 25px;
-}
-
-p {
-    color: rgb(29, 121, 89);
-    font-size: 20px;
-    font-weight: bold;
-}
-
-/*============= - Header - ======================*/
-header {
-    border: 3px solid #124646;
-    background-color: #0a1d1d;
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    width: 100%;
-    /* Do not change. Not breaking border for nav */
+* {
+    /* so border will not break size of blocks when I add padding */
     box-sizing: border-box;
-    /*Why do I have infinit amount of phtos here?
-    background-image: url("../images/updHeader.jpeg");*/
-    background-image: url("../images/images.jpeg");
 }
-
-nav {
-    /* Do not change. Take all space fro left*/
-    margin-left: auto;
-    display: flex;
-    gap: 20px;
-}
-
-/* Adjust here if I need to change the size of header, because now it is limited only by width of photo*/
-.navPhoto{
-    width: 20%;  
-}
-/*============= - Navigation buttons - ======================*/
-.navigation {
-        color: rgb(29, 121, 89);
-        font-weight: bold;
-        font-size: 22px;
-        padding-right: 10px;
-        }
-
- .navigation:hover {
-            background-color: rgba(45, 69, 61, 0.646) !important;
-            color: rgb(12, 111, 73) !important;
-            border-radius: 0.28571429rem 0.28571429rem 0 0 !important;
-            }
 
 /*============================ - Body - =================================*/
+/* ===================== ALL PAGES - Text and body ===================== */
 body {
     margin: 0;
     min-height: 100vh;
-    background-color: #071314;
+    background-color: var(--os-cyan);
+    /* this grid is for old computer feeling, not for real layout */
     background-image:
-        /*lines direction to the right*/
-        linear-gradient(rgba(80, 140, 160, 0.12) 1px, transparent 1px),
-        /*lines direction to down*/
-        linear-gradient(90deg, rgba(80, 140, 160, 0.12) 1px, transparent 1px);
-    background-size: 50px 50px;
+        /* lines direction to the right */
+        linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+        /* lines direction to down */
+        linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 28px 28px;
 
     /* background-image: url("../images/backphoto.jpg");
     background-size: cover;
@@ -77,8 +39,84 @@ body {
     Do not change ; make view point = hight of page window 8
     min-height: 100vh; */
 
+    color: var(--os-black);
+    /* monospace because I want it to look like old system/terminal */
+    font-family: "Courier New", Courier, monospace;
     display: flex;
     flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--os-blue);
+}
+
+h3 {
+    font-size: 25px;
+}
+
+p {
+    color: var(--os-black);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/*============= - Header - ======================*/
+/* ===================== ALL PAGES - Header and navigation ===================== */
+header {
+    border: 4px solid var(--os-black);
+    border-left: 0;
+    border-right: 0;
+    background-color: var(--os-blue);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 8px;
+    width: 100%;
+    /* header is shared between all pages, so changing here changes all 3 pages */
+    /* Do not change. Not breaking border for nav */
+
+    /*Why do I have infinit amount of phtos here?
+    background-image: url("../images/updHeader.jpeg");
+    Answer: background images repeat by default. Here I removed it for TempleOS style. */
+}
+
+nav {
+    /* Do not change. Take all space fro left*/
+    margin-left: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Adjust here if I need to change the size of header, because now it is limited only by width of photo*/
+.navPhoto {
+    width: 170px;
+    min-width: 120px;
+    max-width: 35vw;
+    background-color: var(--os-black);
+    border: 2px solid var(--os-white);
+}
+
+/*============= - Navigation buttons - ======================*/
+.navigation {
+    /* navigation looks like system buttons, not usual links */
+    color: var(--os-white);
+    background-color: var(--os-cyan);
+    border: 3px solid var(--os-white);
+    box-shadow: 4px 4px 0 var(--os-black);
+    font-weight: bold;
+    font-size: 22px;
+    padding: 8px 12px;
+    text-decoration: none;
+}
+
+.navigation:hover {
+    background-color: var(--os-yellow);
+    color: var(--os-blue);
 }
 
 main {
@@ -87,106 +125,165 @@ main {
     flex-direction: column;
     keep footer always on bottom*/
     flex: 1;
+    width: min(1100px, calc(100% - 28px));
+    margin: 18px auto;
+}
+
+/*=================FOOTER=======================*/
+footer {
+    text-align: center;
+    border: 4px solid var(--os-black);
+    border-left: 0;
+    border-right: 0;
+    padding: 20px;
+    background-color: var(--os-blue);
+    margin-top: 15px;
+}
+
+footer p {
+    color: var(--os-white);
 }
 
 /* ===================== Section - 1 - index.html ====================*/
-#homeBarotrauma {
-
+/* ===================== index.html - Common panel style for sections ===================== */
+#homeBarotrauma,
+#reactorCheck,
+#crew,
+#warning {
+    /* this makes my sections look like windows without changing HTML yet */
     text-align: center;
-    margin-bottom: 5px;
+    margin: 22px 0;
+    padding: 20px;
+    border: 4px solid var(--os-black);
+    background-color: var(--os-paper);
+    box-shadow: 8px 8px 0 var(--os-shadow);
+}
+
+/* These labels make sections look like simple OS windows. */
+#homeBarotrauma::before,
+#reactorCheck::before,
+#crew::before,
+#warning::before {
+    /* fake title bar for each section, just with css */
+    display: block;
+    margin: -20px -20px 16px;
+    padding: 7px 10px;
+    color: var(--os-white);
+    background-color: var(--os-blue);
+    border-bottom: 4px solid var(--os-black);
+    font-weight: bold;
+    text-align: left;
+}
+
+#homeBarotrauma::before {
+    content: "BOOT_INFO.TXT";
+}
+
+#reactorCheck::before {
+    content: "REACTOR.EXE";
+}
+
+#crew::before {
+    content: "CREW_CARDS.HBS";
+}
+
+#warning::before {
+    content: "WARNING.TXT";
 }
 
 /* do not change [ UI ] */
+/* ===================== index.html - Section 1 typeText from JS ===================== */
 #typeEffect {
-    margin-left: 5%;
-    margin-right: 5%;
+    /* this is place where JS typing looks like terminal output */
+    min-height: 120px;
+    margin: 12px 0;
+    padding: 14px;
+    color: var(--os-white);
+    background-color: var(--os-black);
+    border: 4px double var(--os-cyan);
+    text-align: left;
 }
 
 /* ===================== Section - 2 - REACTOR - index.html ====================*/
-#reactorCheck {
-    text-align: center;
-    margin: 20px 5%;
-    padding: 20px;
-    border: 3px solid #2a4a47;
-    background-color: rgb(20, 34, 34);
-}
-
+/* ===================== index.html - Section 2 Reactor Check from JS ===================== */
 .reactorMeter {
-    width: 80%;
-    height: 24px;
+    /* visual place for reactor power from JS */
+    width: 100%;
+    height: 30px;
     margin: 15px auto;
-    border: 2px solid #124646;
-    background-color: #071314;
+    border: 4px solid var(--os-black);
+    background-color: var(--os-white);
 }
 
 #reactorBar {
     display: block;
     width: 0;
     height: 100%;
-    background-color: #0dc71f;
+    background-color: var(--os-green);
     transition: width 0.5s ease;
 }
 
 .reactorButton {
     padding: 8px 16px;
     cursor: pointer;
-    background-color: #1f3738;
-    color: rgb(12, 177, 116);
+    color: var(--os-white);
+    background-color: var(--os-blue);
+    border: 3px solid var(--os-black);
+    box-shadow: 4px 4px 0 var(--os-shadow);
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.reactorButton:hover {
+    color: var(--os-blue);
+    background-color: var(--os-yellow);
 }
 
 /* ===================== Section - 3 - index.html ====================*/
-#crew {
-
-    text-align: center;
+/* ===================== index.html - Section 3 Crew Cards from Handlebars ===================== */
+.cardsUI {
+    /* flex here because crew cards need to go next line on small screen */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 5px;
+    gap: 20px;
+}
+
+.CREW {
+    color: var(--os-blue);
 }
 
 .crewCard {
     flex: 0 0 250px;
     margin: 10px;
-    border: 3px solid #2a4a47;
-    box-shadow: 5px 5px 6px 0px rgba(39, 71, 79, 0.3);
+    border: 4px solid var(--os-black);
+    box-shadow: 5px 5px 0 var(--os-cyan);
     transition: 0.5s;
-    background-color: rgb(20, 34, 34);
+    background-color: var(--os-white);
 }
 
 .crewCard img {
     max-width: 100%;
     margin: 0;
+    background-color: var(--os-black);
+    border-bottom: 4px solid var(--os-black);
 }
 
 .crewCard p:nth-of-type(1) {
     padding-bottom: 1em;
-    border-bottom: solid lightgray 4px;
+    border-bottom: solid var(--os-black) 4px;
 }
 
 .crewCard p:nth-of-type(2) {
-    color: rgb(92, 111, 174);
+    color: var(--os-blue);
 }
 
 .crewCard:hover {
-    transform: scale(1.1); /* adjust if changing zoom of cards when pointing*/
-}
-
-.cardsUI {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    
-}
-
-.CREW{
-    color: #0dc71f;
+    transform: scale(1.04); /* adjust if changing zoom of cards when pointing */
 }
 
 /* ===================== Section - 4 - index.html ====================*/
-#warning {
-
-    text-align: center;
-    margin-bottom: 5px;
-}
-
+/* ===================== index.html - Section 4 Warning accordion from JS ===================== */
 #textWarning {
     margin-left: 5%;
     margin-right: 5%;
@@ -200,36 +297,57 @@ main {
     /* cutting what didnt feet */
     transition: max-height 0.5s ease;
     /* that why I have smoothy effect */
-    background: #1f3738;
-    border-radius: 8px;
+    background: var(--os-white);
+    border-radius: 0;
     padding: 0 10px;
 }
 
 .content.open {
     max-height: 200px;
     padding: 10px;
+    border: 3px solid var(--os-black);
 }
 
 /*=================Warning Buttons======================*/
-  
-  .warningButton {
+.buttons {
+    padding-top: 13px;
+}
+
+.warningButton {
     padding: 8px 16px;
     cursor: pointer;
-    background-color: #1f3738;
-    color: rgb(12, 177, 116);
-  }
-  
-  .buttons{
-    padding-top: 13px;
-  }
+    color: var(--os-white);
+    background-color: var(--os-blue);
+    border: 3px solid var(--os-black);
+    box-shadow: 4px 4px 0 var(--os-shadow);
+    font-family: inherit;
+    font-weight: bold;
+}
 
+.warningButton:hover {
+    color: var(--os-blue);
+    background-color: var(--os-yellow);
+}
 
+/* ===================== ALL PAGES - Mobile layout ===================== */
+@media (max-width: 700px) {
+    /* small screen fixes, because header buttons become too wide on phone */
+    header {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-/*=================FOOTER=======================*/
-footer {
-    text-align: center;
-    border: 3px solid #124646;
-    padding: 20px;
-    background-color: #0a1d1d;
-    margin-top: 15px;
+    nav {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .navigation {
+        font-size: 18px;
+    }
+
+    main {
+        width: calc(100% - 16px);
+    }
 }
