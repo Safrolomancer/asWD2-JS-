@@ -316,6 +316,106 @@ footer p {
     background-color: var(--os-yellow);
 }
 
+
+/*==========================INFO INFO IUNFO INFO INFO INFO INFO ==============================*/
+/* ===================== data.html - Section 1, 2, 3 ====================*/
+/* This is for data page. I keep it separate because it is main programming task */
+#dataIntro,
+#dataControls,
+#submarineList {
+    text-align: center;
+    margin: 22px 0;
+    padding: 20px;
+    border: 4px solid var(--os-black);
+    background-color: var(--os-paper);
+    box-shadow: 8px 8px 0 var(--os-shadow);
+}
+
+#dataIntro::before,
+#dataControls::before,
+#submarineList::before {
+    display: block;
+    margin: -20px -20px 16px;
+    padding: 7px 10px;
+    color: var(--os-white);
+    background-color: var(--os-blue);
+    border-bottom: 4px solid var(--os-black);
+    font-weight: bold;
+    text-align: left;
+}
+
+#dataIntro::before {
+    content: "SUBMARINE_DATA.TXT";
+}
+
+#dataControls::before {
+    content: "DATA_FORM.HTML";
+}
+
+#submarineList::before {
+    content: "SUBMARINE_TEMPLATE.HBS";
+}
+
+/* ===================== data.html - Form and tools ====================*/
+/* Form is visible now, but JS for adding data will come in next steps */
+/**/
+.dataForm,
+.dataTools {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.dataForm label,
+.dataTools label {
+    color: var(--os-white);
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.dataForm input,
+.dataTools input,
+.dataTools select {
+    min-height: 35px;
+    padding: 7px;
+    color: var(--os-black);
+    background-color: var(--os-white);
+    border: 3px solid var(--os-black);
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.wideInput {
+    min-width: min(420px, 100%);
+}
+
+/* ===================== data.html - Submarine cards from Handlebars ====================*/
+/* These cards are created from JS array, not typed manually in HTML */
+/*Just took the same template as for crew array on main page*/
+.dataCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.dataCard {
+    width: 260px;
+    padding: 14px;
+    background-color: var(--os-white);
+    border: 4px solid var(--os-black);
+    box-shadow: 5px 5px 0 var(--os-cyan);
+}
+
+.dataCard p {
+    font-size: 16px;
+}
+
 /* ===================== ALL PAGES - Mobile layout ===================== */
 @media (max-width: 700px) {
     header {
@@ -335,5 +435,9 @@ footer p {
 
     main {
         width: calc(100% - 16px);
+    }
+
+    .dataCard {
+        width: min(300px, 100%);
     }
 }

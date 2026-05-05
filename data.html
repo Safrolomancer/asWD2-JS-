@@ -20,12 +20,103 @@
     </header>
 
     <main>
+        <!--======================DATA PAGE SECTION 1=============================-->
+        <!-- Main programming page intro. More JS functions will be added in next steps -->
+        <section id="dataIntro">
+            <h1>Submarine Data Board</h1>
+            <p>
+                You can manually add or delete that you have been using during your company in Barotrauma just for yourself.
+            </p>
+        </section>
+
+        <!--======================DATA PAGE SECTION 2=============================-->
+        <!-- Form and controls are here now, JS for add/search/sort will be added later -->
+        <section id="dataControls">
+            <h2>Add / Search / Sort</h2>
+            <!---->
+            <form id="submarineForm" class="dataForm">
+                <label>
+                    Name
+                    <input id="subName" type="text" placeholder="Example: Humpback">
+                </label>
+
+                <label>
+                    Class
+                    <input id="subClass" type="text" placeholder="Attack / Scout / Transport">
+                </label>
+
+                <label>
+                    Tier
+                    <input id="subTier" type="number" min="1" max="3" placeholder="2">
+                </label>
+
+                <label>
+                    Crew Need
+                    <input id="subCrew" type="number" min="1" max="20" placeholder="6">
+                </label>
+
+                <label>
+                    Danger Level
+                    <input id="subDanger" type="number" min="1" max="10" placeholder="7">
+                </label>
+
+                <label class="wideInput">
+                    Short Note
+                    <input id="subNote" type="text" placeholder="Good for nervous beginners">
+                </label>
+
+                <button class="reactorButton" id="addSubmarineButton" type="button">Add Submarine</button>
+            </form>
+
+            <div class="dataTools">
+                <label>
+                    Search
+                    <input id="submarineSearch" type="search" placeholder="Search by name or class">
+                </label>
+
+                <label>
+                    Sort
+                    <select id="submarineSort">
+                        <option value="nameAsc">Name A-Z</option>
+                        <option value="nameDesc">Name Z-A</option>
+                        <option value="crewAsc">Crew low-high</option>
+                        <option value="crewDesc">Crew high-low</option>
+                    </select>
+                </label>
+            </div>
+        </section>
+
+        <!--======================DATA PAGE SECTION 3=============================-->
+        <!-- Handlebars takes my array from JS and puts cards into submarineOutput -->
+        <section id="submarineList">
+            <h2>Submarines</h2>
+            <div id="submarineOutput"></div>
+
+
+            <!-- Look JS line 163 -->
+            <script id="submarineTemplate" type="text/x-handlebars-template">
+                <div class="dataCards">
+                    {{#each this}}
+                    <div class="dataCard">
+                        <h3>{{name}}</h3>
+                        <p><b>Class:</b> {{subClass}}</p>
+                        <p><b>Tier:</b> {{tier}}</p>
+                        <p><b>Crew Need:</b> {{crew}}</p>
+                        <p><b>Danger:</b> {{danger}} / 10</p>
+                        <p>{{note}}</p>
+                    </div>
+                    {{/each}}
+                </div>
+            </script>
+        </section>
 
     </main>
 
     <footer>
         <p>Safrolomancer | github | JavaScript Assignment Matvii Krylov 20118691</p>
     </footer>
+    <!-- Referenced to [ Week 6 ] Lab number 2. Needed for data page Handlebars render -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 

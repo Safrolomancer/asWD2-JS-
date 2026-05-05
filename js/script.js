@@ -106,3 +106,71 @@ if (crewTemplate && crewOutput && window.Handlebars) {
 
     crewOutput.innerHTML = act; // deployment for my HTMKL
 }
+
+// ==========================WEEK 9 ADD DELETE IN MY ARRAY ==================================================
+// =========================== data.html =========== ARRAY for Submarine Data================
+
+const submarines = [    //have created array for submarine objects, it is main dataset for data.html
+{
+    "name": "Dugong",
+    "subClass": "Scout",
+    "tier": 1,
+    "crew": 4,
+    "danger": 4,
+    "note": "Small starter submarine. It is simple, but crew must repair fast."
+},
+
+{
+    "name": "Barsuk",
+    "subClass": "Attack",
+    "tier": 1,
+    "crew": 5,
+    "danger": 6,
+    "note": "Cheap attack submarine. Good if captain accepts chaos."
+},
+
+{
+    "name": "Humpback",
+    "subClass": "Attack",
+    "tier": 2,
+    "crew": 6,
+    "danger": 7,
+    "note": "Balanced submarine with stronger fight mood and good team pressure."
+},
+
+{
+    "name": "Orca",
+    "subClass": "Scout",
+    "tier": 2,
+    "crew": 5,
+    "danger": 5,
+    "note": "Fast scout submarine. Useful when crew wants movement more than armor."
+},
+
+{
+    "name": "Camel",
+    "subClass": "Transport",
+    "tier": 2,
+    "crew": 7,
+    "danger": 6,
+    "note": "Transport submarine. Has space for cargo and for losing your friends."
+},
+];
+
+//was teached by practical 9 - Week 9
+// [  https://tutors.dev/lab/setu-website-development-2/topic-09-JavaScript-9/book-01-Objects]
+
+let submarineTemplate = document.getElementById("submarineTemplate");
+let submarineOutput = document.getElementById("submarineOutput");
+
+// This checks that we are on data.html, because other pages do not have submarine template
+if (submarineTemplate && submarineOutput && window.Handlebars) {
+    // declare "submarineSource" as find template by id and take content as line
+    const submarineSource = submarineTemplate.innerHTML // allow to change HTML [ .innerHTML ]
+    // Create template for submarine cards. Same idea as crew cards but with another array
+    // tah i did on main page.
+    const submarineCardTemplate = Handlebars.compile(submarineSource);
+    const submarineCards = submarineCardTemplate(submarines); // getting my array "submarines" and put in html
+
+    submarineOutput.innerHTML = submarineCards; // deployment for my data page HTML through inner
+}
