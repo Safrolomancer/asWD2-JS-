@@ -15,6 +15,30 @@ function typeText() {
 typeText(); // call my function. Because before we only declared but never called
 
 // ============================================================================
+// =========================== Section 2 index.html =========== Reactor Check================
+
+let reactorButton = document.getElementById("reactorButton");
+let reactorStatus = document.getElementById("reactorStatus");
+let reactorBar = document.getElementById("reactorBar");
+
+// When the button is clicked, JavaScript creates a random reactor power value.
+reactorButton.addEventListener("click", function () {
+    let reactorPower = Math.floor(Math.random() * 46) + 55;
+
+    // Change the green bar width to visually show the reactor power.
+    reactorBar.style.width = reactorPower + "%";
+
+    // Change the text depending on the random power value.
+    if (reactorPower >= 85) {
+        reactorStatus.textContent = "Stable output: " + reactorPower + "%. Engines are ready.";
+    } else if (reactorPower >= 70) {
+        reactorStatus.textContent = "Acceptable output: " + reactorPower + "%. Keep checking the fuel rods.";
+    } else {
+        reactorStatus.textContent = "Unstable output: " + reactorPower + "%. Engineer required.";
+    }
+});
+
+// ============================================================================
 // =========================== Section 3 index.html =========== Accordion for Warning================
 // As a guidence I have been using other source. Reference provided to follow fairnes rules
 // Reference: https://itchief.ru/javascript/accordion
