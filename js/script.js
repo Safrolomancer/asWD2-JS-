@@ -163,14 +163,27 @@ let submarines = [    //have created array for submarine objects, it is main dat
 },
 ];
 
+// DO NOT CHANGE AND TOUCH============================
+// copy of first array for reset button
+let firstSubmarineArray = submarines.slice(); 
+
 //was teached by practical 9 - Week 9
 // [  https://tutors.dev/lab/setu-website-development-2/topic-09-JavaScript-9/book-01-Objects]
 
+//---------------------------------------------------------------------------------------------
+//========== Variabels that using only for total data section================================
 let submarineTemplate = document.getElementById("submarineTemplate");
 let submarineOutput = document.getElementById("submarineOutput");
 let submarineForm = document.getElementById("submarineForm");
 let submarineSearch = document.getElementById("submarineSearch");
 let submarineSort = document.getElementById("submarineSort");
+//---------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------
+let resetSubmarineData = document.getElementById("resetSubmarineData");
+let totalSubmarines = document.getElementById("totalSubmarines");
+let averageDanger = document.getElementById("averageDanger");
+let averageCrew = document.getElementById("averageCrew");
+let mostDangerousSubmarine = document.getElementById("mostDangerousSubmarine");
 
 // This checks that we are on data.html, because other pages do not have submarine template
 if (submarineTemplate && submarineOutput && window.Handlebars) {
@@ -179,6 +192,69 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
     // Create template for submarine cards. Same idea as crew cards but with another array
     // tah i did on main page.
     const submarineCardTemplate = Handlebars.compile(submarineSource);
+
+//====================================================================================================
+//====================================================================================================
+//====================================================================================================
+    const submarineStorageKey = "barotraumaSubmarines"; // name for localStorage, like small save file in browser
+
+    // localStorage keeps my array even after page reload
+    function saveSubmarines() {
+        if (window.localStorage) {
+            // found it in WEEK 10 lab 
+            // and on this page as well
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+            window.localStorage.setItem(submarineStorageKey, JSON.stringify(submarines));
+        }
+    }
+
+    // load saved array from browser, but if nothing saved it keeps my first array
+    function loadSubmarines() {
+        if (window.localStorage) {
+            let savedSubmarines = window.localStorage.getItem(submarineStorageKey);
+
+            if (savedSubmarines) {
+                submarines = JSON.parse(savedSubmarines);
+            }
+        }
+    }
+
+    // this is calculated feature for assignment, it counts data from my array
+    function updateSubmarineStats() {
+        if (totalSubmarines && averageDanger && averageCrew && mostDangerousSubmarine) {
+            if (submarines.length === 0) {
+                totalSubmarines.textContent = "0";
+                averageDanger.textContent = "0";
+                averageCrew.textContent = "0";
+                mostDangerousSubmarine.textContent = "None";
+                return;
+            }
+
+            let dangerTotal = 0;
+            let crewTotal = 0;
+            let mostDangerous = submarines[0];
+
+            submarines.forEach(function (submarine) {
+                dangerTotal += submarine.danger;
+                crewTotal += submarine.crew;
+
+                if (submarine.danger > mostDangerous.danger) {
+                    mostDangerous = submarine;
+                }
+            });
+
+            totalSubmarines.textContent = submarines.length;
+//average 
+// [toFixed return text and not number because returning result into HTML as a text]            
+            averageDanger.textContent = (dangerTotal / submarines.length).toFixed(1);
+            averageCrew.textContent = (crewTotal / submarines.length).toFixed(1);
+            mostDangerousSubmarine.textContent = mostDangerous.name + " (" + mostDangerous.danger + "/10)";
+        }
+    }
+
+ //====================================================================================================
+ //====================================================================================================
+ //==================================================================================================== 
 
     // This function is needed because every add, delete, search or sort must draw cards again
     function renderSubmarines() {
@@ -229,6 +305,7 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
         }); // getting my array "submarines" and put in html
 
         submarineOutput.innerHTML = submarineCards; // deployment for my data page HTML through inner
+        updateSubmarineStats();
     }
 
     if (submarineForm) {
@@ -249,9 +326,30 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
 
             submarines.push(newSubmarine); // put new object in my array, after that render shows it
             submarineForm.reset(); // clear form because object already was added
+            saveSubmarines(); // save after add, so reload will not delete new card
             renderSubmarines();
         });
     }
+
+    if (resetSubmarineData) {
+        // reset brings back first data, because user can delete or add too much during testing
+        resetSubmarineData.addEventListener("click", function () {
+
+            submarines = firstSubmarineArray.slice(); //slice makes new copie of the array.
+
+            if (submarineSearch) {
+                submarineSearch.value = "";
+            }
+
+            if (submarineSort) {
+                submarineSort.value = "nameAsc";
+            }
+
+            saveSubmarines();
+            renderSubmarines();
+        });
+    }
+
 //====================DELETE DELETE DELETE DELTE =====================================================
     // click is on output because delete buttons are created by Handlebars after page loads
     submarineOutput.addEventListener("click", function (event) {
@@ -266,6 +364,7 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
                 return submarine.id !== idToDelete;
             });
 //render
+            saveSubmarines(); // save after delete, so deleted card will stay deleted after reload
             renderSubmarines();
         }
     });
@@ -278,8 +377,11 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
         submarineSort.addEventListener("change", renderSubmarines);
     }
 
+    loadSubmarines();
     renderSubmarines();
 }
 //some information material I took for themes above from: 
 //https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
 //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+//https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify

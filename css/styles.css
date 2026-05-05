@@ -322,6 +322,7 @@ footer p {
 /* This is for data page. I keep it separate because it is main programming task */
 #dataIntro,
 #dataControls,
+#dataStats,
 #submarineList {
     text-align: center;
     margin: 22px 0;
@@ -333,6 +334,7 @@ footer p {
 
 #dataIntro::before,
 #dataControls::before,
+#dataStats::before,
 #submarineList::before {
     display: block;
     margin: -20px -20px 16px;
@@ -352,12 +354,16 @@ footer p {
     content: "DATA_FORM.HTML";
 }
 
+#dataStats::before {
+    content: "LOCAL_STORAGE_STATS.JS";
+}
+
 #submarineList::before {
     content: "SUBMARINE_TEMPLATE.HBS";
 }
 
 /* ===================== data.html - Form and tools ====================*/
-/* Form is visible now, but JS for adding data will come in next steps */
+/* Form is visible now and JS uses it for add/search/sort/reset */
 /**/
 .dataForm,
 .dataTools {
@@ -390,8 +396,33 @@ footer p {
     font-weight: bold;
 }
 
+.dataTools .reactorButton {
+    align-self: flex-end;
+}
+
 .wideInput {
     min-width: min(420px, 100%);
+}
+/*==================TOTAL STATS TOTAL STATS TOTALS STATS==========================================*/
+/* ===================== data.html - calculated stats from JS ====================*/
+/* this is not typed manually, JS changes numbers after add/delete/reset */
+.statsBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.statsBox p {
+    min-width: 210px;
+    padding: 10px;
+    color: var(--os-white);
+    background-color: var(--os-black);
+    border: 3px solid var(--os-white);
+}
+
+.statsBox span {
+    color: var(--os-yellow);
 }
 
 /* ===================== data.html - Submarine cards from Handlebars ====================*/

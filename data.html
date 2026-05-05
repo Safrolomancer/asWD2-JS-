@@ -83,10 +83,25 @@
                         <option value="crewDesc">Crew high-low</option>
                     </select>
                 </label>
+                <!--to return all data from the beginning-->
+                <button class="reactorButton" id="resetSubmarineData" type="button">Reset Data</button>
             </div>
         </section>
 
         <!--======================DATA PAGE SECTION 3=============================-->
+        <!-- JS puts calculated information here. This is for assignment extra feature -->
+        <section id="dataStats">
+            <h2>Submarine Stats</h2>
+            <div class="statsBox">
+                <!---->
+                <p>Total Submarines: <span id="totalSubmarines">0</span></p>
+                <p>Average Danger: <span id="averageDanger">0</span></p>
+                <p>Average Crew: <span id="averageCrew">0</span></p>
+                <p>Most Dangerous: <span id="mostDangerousSubmarine">None</span></p>
+            </div>
+        </section>
+
+        <!--======================DATA PAGE SECTION 4=============================-->
         <!-- Handlebars takes my array from JS and puts cards into submarineOutput -->
         <section id="submarineList">
             <h2>Submarines</h2>
