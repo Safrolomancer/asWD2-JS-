@@ -30,42 +30,42 @@
         </section>
 
         <!--======================DATA PAGE SECTION 2=============================-->
-        <!-- Form and controls are here now, JS for add/search/sort will be added later -->
+        <!-- This form is connected with JS step 8, here I add/search/sort submarine data -->
         <section id="dataControls">
             <h2>Add / Search / Sort</h2>
             <!---->
             <form id="submarineForm" class="dataForm">
                 <label>
                     Name
-                    <input id="subName" type="text" placeholder="Example: Humpback">
+                    <input id="subName" type="text" placeholder="Example: Humpback" required>
                 </label>
 
                 <label>
                     Class
-                    <input id="subClass" type="text" placeholder="Attack / Scout / Transport">
+                    <input id="subClass" type="text" placeholder="Attack / Scout / Transport" required>
                 </label>
 
                 <label>
                     Tier
-                    <input id="subTier" type="number" min="1" max="3" placeholder="2">
+                    <input id="subTier" type="number" min="1" max="3" placeholder="2" required>
                 </label>
 
                 <label>
                     Crew Need
-                    <input id="subCrew" type="number" min="1" max="20" placeholder="6">
+                    <input id="subCrew" type="number" min="1" max="20" placeholder="6" required>
                 </label>
 
                 <label>
                     Danger Level
-                    <input id="subDanger" type="number" min="1" max="10" placeholder="7">
+                    <input id="subDanger" type="number" min="1" max="10" placeholder="7" required>
                 </label>
 
                 <label class="wideInput">
                     Short Note
-                    <input id="subNote" type="text" placeholder="Good for nervous beginners">
+                    <input id="subNote" type="text" placeholder="Good for nervous beginners" required>
                 </label>
 
-                <button class="reactorButton" id="addSubmarineButton" type="button">Add Submarine</button>
+                <button class="reactorButton" id="addSubmarineButton" type="submit">Add Submarine</button>
             </form>
 
             <div class="dataTools">
@@ -95,8 +95,9 @@
 
             <!-- Look JS line 163 -->
             <script id="submarineTemplate" type="text/x-handlebars-template">
+                {{#if hasSubmarines}}
                 <div class="dataCards">
-                    {{#each this}}
+                    {{#each submarines}}
                     <div class="dataCard">
                         <h3>{{name}}</h3>
                         <p><b>Class:</b> {{subClass}}</p>
@@ -104,9 +105,15 @@
                         <p><b>Crew Need:</b> {{crew}}</p>
                         <p><b>Danger:</b> {{danger}} / 10</p>
                         <p>{{note}}</p>
+
+                        <!--Here adding ID directly into my button. Handelbar do it directly-->
+                        <button class="warningButton deleteSubmarineButton" type="button" data-id="{{id}}">Delete</button>
                     </div>
                     {{/each}}
                 </div>
+                {{else}}
+                <p class="emptyDataMessage">No submarines found.</p>
+                {{/if}}
             </script>
         </section>
 

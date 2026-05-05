@@ -107,11 +107,13 @@ if (crewTemplate && crewOutput && window.Handlebars) {
     crewOutput.innerHTML = act; // deployment for my HTMKL
 }
 
-// ==========================WEEK 9 ADD DELETE IN MY ARRAY ==================================================
+// ==========================WEEK 9 and 10 ADD DELETE IN MY ARRAY ==================================================
 // =========================== data.html =========== ARRAY for Submarine Data================
 
-const submarines = [    //have created array for submarine objects, it is main dataset for data.html
+let submarines = [    //have created array for submarine objects, it is main dataset for data.html
+    // added id because it is uniq to find/sort/delete/add
 {
+    "id": 1,
     "name": "Dugong",
     "subClass": "Scout",
     "tier": 1,
@@ -121,6 +123,7 @@ const submarines = [    //have created array for submarine objects, it is main d
 },
 
 {
+    "id": 2,
     "name": "Barsuk",
     "subClass": "Attack",
     "tier": 1,
@@ -130,6 +133,7 @@ const submarines = [    //have created array for submarine objects, it is main d
 },
 
 {
+    "id": 3,
     "name": "Humpback",
     "subClass": "Attack",
     "tier": 2,
@@ -139,6 +143,7 @@ const submarines = [    //have created array for submarine objects, it is main d
 },
 
 {
+    "id": 4,
     "name": "Orca",
     "subClass": "Scout",
     "tier": 2,
@@ -148,6 +153,7 @@ const submarines = [    //have created array for submarine objects, it is main d
 },
 
 {
+    "id": 5,
     "name": "Camel",
     "subClass": "Transport",
     "tier": 2,
@@ -162,6 +168,9 @@ const submarines = [    //have created array for submarine objects, it is main d
 
 let submarineTemplate = document.getElementById("submarineTemplate");
 let submarineOutput = document.getElementById("submarineOutput");
+let submarineForm = document.getElementById("submarineForm");
+let submarineSearch = document.getElementById("submarineSearch");
+let submarineSort = document.getElementById("submarineSort");
 
 // This checks that we are on data.html, because other pages do not have submarine template
 if (submarineTemplate && submarineOutput && window.Handlebars) {
@@ -170,7 +179,107 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
     // Create template for submarine cards. Same idea as crew cards but with another array
     // tah i did on main page.
     const submarineCardTemplate = Handlebars.compile(submarineSource);
-    const submarineCards = submarineCardTemplate(submarines); // getting my array "submarines" and put in html
 
-    submarineOutput.innerHTML = submarineCards; // deployment for my data page HTML through inner
+    // This function is needed because every add, delete, search or sort must draw cards again
+    function renderSubmarines() {
+        let searchText = "";
+        let sortValue = "nameAsc";
+
+        if (submarineSearch) {
+            //trim here is to delete space and to lowecase to search.
+            //like no difference between upper or lower 
+            searchText = submarineSearch.value.trim().toLowerCase();
+        }
+
+        if (submarineSort) {
+            sortValue = submarineSort.value;
+        }
+
+
+        //=-========REFERENCE-===========
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter#:~:text=array%20is%20returned.-,Description,included%20in%20the%20new%20array.
+        //  it only makes list for screen
+        let visibleSubmarines = submarines.filter(function (submarine) {
+            let nameText = submarine.name.toLowerCase();
+            let classText = submarine.subClass.toLowerCase();
+
+            return nameText.includes(searchText) || classText.includes(searchText);
+        });
+
+        // sort is here for changing order on screen, so user can check data easier
+        // so this function because it is not deleting something from array
+        // it is just showing what is in filter 
+        visibleSubmarines.sort(function (firstSubmarine, secondSubmarine) {
+            if (sortValue === "nameAsc") {
+                return firstSubmarine.name.localeCompare(secondSubmarine.name);
+            } else if (sortValue === "nameDesc") {
+                return secondSubmarine.name.localeCompare(firstSubmarine.name);
+            } else if (sortValue === "crewAsc") {
+                return firstSubmarine.crew - secondSubmarine.crew;
+            } else {
+                return secondSubmarine.crew - firstSubmarine.crew;
+            }
+        });
+
+
+        //=================================================
+        const submarineCards = submarineCardTemplate({
+            "submarines": visibleSubmarines,
+            "hasSubmarines": visibleSubmarines.length > 0
+        }); // getting my array "submarines" and put in html
+
+        submarineOutput.innerHTML = submarineCards; // deployment for my data page HTML through inner
+    }
+
+    if (submarineForm) {
+        // submit is used because this is real form for adding new object to array
+        submarineForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // to avoid reloading of my page 
+            // found in https://www.w3schools.com/Jsref/event_preventdefault.asp
+
+            let newSubmarine = {
+                "id": Date.now(),
+                "name": document.getElementById("subName").value.trim(),
+                "subClass": document.getElementById("subClass").value.trim(),
+                "tier": Number(document.getElementById("subTier").value),
+                "crew": Number(document.getElementById("subCrew").value),
+                "danger": Number(document.getElementById("subDanger").value),
+                "note": document.getElementById("subNote").value.trim()
+            };
+
+            submarines.push(newSubmarine); // put new object in my array, after that render shows it
+            submarineForm.reset(); // clear form because object already was added
+            renderSubmarines();
+        });
+    }
+//====================DELETE DELETE DELETE DELTE =====================================================
+    // click is on output because delete buttons are created by Handlebars after page loads
+    submarineOutput.addEventListener("click", function (event) {
+        if (event.target.classList.contains("deleteSubmarineButton")) {
+            //event.target element that I have just clicked. CLICKED because before was 
+            //when I only pointed on text
+            let idToDelete = Number(event.target.dataset.id);
+            // delete uses id because two submarines can have same name
+            submarines = submarines.filter(function (submarine) {
+                // If it DOESN`T contain id it is staying in the array
+                //If submarine has the same value as button delete than this submarine doesnt adding in new array
+                return submarine.id !== idToDelete;
+            });
+//render
+            renderSubmarines();
+        }
+    });
+
+    if (submarineSearch) {
+        submarineSearch.addEventListener("input", renderSubmarines);
+    }
+
+    if (submarineSort) {
+        submarineSort.addEventListener("change", renderSubmarines);
+    }
+
+    renderSubmarines();
 }
+//some information material I took for themes above from: 
+//https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+//https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
