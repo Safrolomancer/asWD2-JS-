@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Barotrauma</title>
+    <!-- AOS plugin css is here so scroll animation can work on home page too -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -23,7 +25,7 @@
 
         <!--======================SECTION 1=============================-->
         <!-- 1 General info of web content ; 1st section of page -->
-        <section id="homeBarotrauma">
+        <section id="homeBarotrauma" data-aos="fade-up">
             <h1>Barotrauma</h1>
             <h2 id="typeEffect"></h2>
             <p></p>
@@ -31,7 +33,7 @@
 
         <!--======================SECTION 2=============================-->
         <!-- 2 Reactor check ; JavaScript button interaction -->
-        <section id="reactorCheck">
+        <section id="reactorCheck" data-aos="fade-up">
             <h2>REACTOR CHECK</h2>
             <p id="reactorStatus">Reactor is waiting for the engineer.</p>
 
@@ -44,7 +46,7 @@
 
         <!--======================SECTION 3=============================-->
         <!-- 3 Crew cards ; rendered from JS array with Handlebars -->
-        <section id="crew">
+        <section id="crew" data-aos="fade-up">
             <h2 class="CREW">CREW</h2>
 
             <div id="crewoutput"></div> <!-- Output for my cards from JS -->
@@ -71,7 +73,7 @@
 
         <!--======================SECTION 4=============================-->
         <!-- 4 Warning section ; 4th section of page -->
-        <section id="warning">
+        <section id="warning" data-aos="fade-up">
 
             <div class="infoHideShow">
                 <h1>! WARNING !</h1>
@@ -98,6 +100,8 @@
     </footer>
     <!-- Referenced to [ Week 6 ]  Lab number 2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <!-- AOS plugin js. My script.js starts it if window.AOS exists -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="js/script.js"></script>
 </body>
 

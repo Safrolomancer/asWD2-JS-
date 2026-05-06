@@ -424,9 +424,10 @@ let nextPhoto = document.getElementById("nextPhoto");
 
 //---------------------------------PLUGIN--------------------------------------------------------
 // I use this because assignment asks for third party JavaScript plugin
+// Now AOS script is connected in index.html, data.html and about.html
 //--------------------------------------------------------------------------------
 if (window.AOS) {
-    //check window.AOS first because plugin is only loaded on about.html
+    //check window.AOS first because if plugin did not load my JS file will not crash
     window.AOS.init({
         "duration": 500,
         "once": true

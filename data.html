@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Info - Barotrauma</title>
+    <!-- AOS plugin css is here so scroll animation can work on data page too -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -22,7 +24,7 @@
     <main>
         <!--======================DATA PAGE SECTION 1=============================-->
         <!-- Main programming page intro. More JS functions will be added in next steps -->
-        <section id="dataIntro">
+        <section id="dataIntro" data-aos="fade-up">
             <h1>Submarine Data Board</h1>
             <p>
                 You can manually add or delete that you have been using during your company in Barotrauma just for yourself.
@@ -31,7 +33,7 @@
 
         <!--======================DATA PAGE SECTION 2=============================-->
         <!-- This form is connected with JS step 8, here I add/search/sort submarine data -->
-        <section id="dataControls">
+        <section id="dataControls" data-aos="fade-up">
             <h2>Add / Search / Sort</h2>
             <!---->
             <form id="submarineForm" class="dataForm">
@@ -90,7 +92,7 @@
 
         <!--======================DATA PAGE SECTION 3=============================-->
         <!-- JS puts calculated information here. This is for assignment extra feature -->
-        <section id="dataStats">
+        <section id="dataStats" data-aos="fade-up">
             <h2>Submarine Stats</h2>
             <div class="statsBox">
                 <!---->
@@ -103,7 +105,7 @@
 
         <!--======================DATA PAGE SECTION 4=============================-->
         <!-- Handlebars takes my array from JS and puts cards into submarineOutput -->
-        <section id="submarineList">
+        <section id="submarineList" data-aos="fade-up">
             <h2>Submarines</h2>
             <div id="submarineOutput"></div>
 
@@ -139,6 +141,8 @@
     </footer>
     <!-- Referenced to [ Week 6 ] Lab number 2. Needed for data page Handlebars render -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <!-- AOS plugin js. My script.js starts it if window.AOS exists -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="js/script.js"></script>
 </body>
 
