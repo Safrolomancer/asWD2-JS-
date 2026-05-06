@@ -8,4 +8,4 @@ The project demonstrates JavaScript interactivity, dynamic data rendering, array
 Add your deployed GitHub Pages link here:
 
 ```text
-https://Safrolomancer.github.io/Assignment_Barotrauma/
+https://safrolomancer.github.io/asWD2-JS-/
