@@ -136,6 +136,10 @@ footer p {
     color: var(--os-white);
 }
 
+footer a {
+    color: var(--os-white);
+}
+
 /* ===================== Section - 1 - index.html ====================*/
 /* ===================== index.html - Common panel style for sections ===================== */
 #homeBarotrauma,

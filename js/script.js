@@ -2,7 +2,7 @@
 let text = "Barotrauma is a cooperative survival game where players travel in a submarine under the frozen ocean of Jupiter's moon Europa. In the game, you need to work as a team, control different systems in the submarine, repair damage, and survive dangerous sea creatures and other threats. The game is known for its tense atmosphere, teamwork, and unexpected situations.";
 let index = 0; //number of letter 0 because index starts from 0
 let speed = 30; // 70 means mileseconds  = 0.07 ms
-let typeEffect = document.getElementById("typeEffect");
+let typeEffect = document.querySelector("#typeEffect");
 
 // just take a function 
 function typeText() {
@@ -18,9 +18,9 @@ typeText(); // call my function. Because before we only declared but never calle
 // ============================================================================
 // =========================== Section 2 index.html =========== Reactor Check================
 
-let reactorButton = document.getElementById("reactorButton");
-let reactorStatus = document.getElementById("reactorStatus");
-let reactorBar = document.getElementById("reactorBar");
+let reactorButton = document.querySelector("#reactorButton");
+let reactorStatus = document.querySelector("#reactorStatus");
+let reactorBar = document.querySelector("#reactorBar");
 
 // When the button is clicked, JavaScript creates a random reactor power value.
 // Extra check needed because this JS file is also loaded on about.html and data.html
@@ -47,10 +47,10 @@ if (reactorButton && reactorStatus && reactorBar) {
 // As a guidence I have been using other source. Reference provided to follow fairnes rules
 // Reference: https://itchief.ru/javascript/accordion
 
-let show = document.getElementById("showButton"); 
+let show = document.querySelector("#showButton"); 
 // I am not declearing smth new, I say to fing alredy existing 
-let hide = document.getElementById("hideButton");
-let textWarning = document.getElementById("textWarning");
+let hide = document.querySelector("#hideButton");
+let textWarning = document.querySelector("#textWarning");
 
 // I had a id "textWarning" and I say to add class "open" o my class "content"
 // in my div. So and in css I created format for "open" 
@@ -93,8 +93,8 @@ const crew = [    //have created array for nickanmes, mages and roles
 },
 ];
 
-let crewTemplate = document.getElementById("tookWeek6");
-let crewOutput = document.getElementById("crewoutput");
+let crewTemplate = document.querySelector("#tookWeek6");
+let crewOutput = document.querySelector("#crewoutput");
 
 // Extra check needed because this JS file is also loaded on about.html and data.html
 if (crewTemplate && crewOutput && window.Handlebars) {
@@ -172,18 +172,18 @@ let firstSubmarineArray = submarines.slice();
 
 //---------------------------------------------------------------------------------------------
 //========== Variabels that using only for total data section================================
-let submarineTemplate = document.getElementById("submarineTemplate");
-let submarineOutput = document.getElementById("submarineOutput");
-let submarineForm = document.getElementById("submarineForm");
-let submarineSearch = document.getElementById("submarineSearch");
-let submarineSort = document.getElementById("submarineSort");
+let submarineTemplate = document.querySelector("#submarineTemplate");
+let submarineOutput = document.querySelector("#submarineOutput");
+let submarineForm = document.querySelector("#submarineForm");
+let submarineSearch = document.querySelector("#submarineSearch");
+let submarineSort = document.querySelector("#submarineSort");
 //---------------------------------------------------------------------------------------------
 //---------------------------------------------------------------------------------------------
-let resetSubmarineData = document.getElementById("resetSubmarineData");
-let totalSubmarines = document.getElementById("totalSubmarines");
-let averageDanger = document.getElementById("averageDanger");
-let averageCrew = document.getElementById("averageCrew");
-let mostDangerousSubmarine = document.getElementById("mostDangerousSubmarine");
+let resetSubmarineData = document.querySelector("#resetSubmarineData");
+let totalSubmarines = document.querySelector("#totalSubmarines");
+let averageDanger = document.querySelector("#averageDanger");
+let averageCrew = document.querySelector("#averageCrew");
+let mostDangerousSubmarine = document.querySelector("#mostDangerousSubmarine");
 
 // This checks that we are on data.html, because other pages do not have submarine template
 if (submarineTemplate && submarineOutput && window.Handlebars) {
@@ -316,12 +316,12 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
 
             let newSubmarine = {
                 "id": Date.now(),
-                "name": document.getElementById("subName").value.trim(),
-                "subClass": document.getElementById("subClass").value.trim(),
-                "tier": Number(document.getElementById("subTier").value),
-                "crew": Number(document.getElementById("subCrew").value),
-                "danger": Number(document.getElementById("subDanger").value),
-                "note": document.getElementById("subNote").value.trim()
+                "name": document.querySelector("#subName").value.trim(),
+                "subClass": document.querySelector("#subClass").value.trim(),
+                "tier": Number(document.querySelector("#subTier").value),
+                "crew": Number(document.querySelector("#subCrew").value),
+                "danger": Number(document.querySelector("#subDanger").value),
+                "note": document.querySelector("#subNote").value.trim()
             };
 
             submarines.push(newSubmarine); // put new object in my array, after that render shows it
@@ -409,16 +409,16 @@ let projectComments = [    // this is array of objects for about.html comment se
 ];
 
 //connected about.html ids with JS 
-let commentTemplate = document.getElementById("commentTemplate");
-let commentOutput = document.getElementById("commentOutput");
-let commentForm = document.getElementById("commentForm");
-let commentName = document.getElementById("commentName");
-let commentRating = document.getElementById("commentRating");
-let commentText = document.getElementById("commentText");
-let carouselImage = document.getElementById("carouselImage");
-let carouselCounter = document.getElementById("carouselCounter");
-let previousPhoto = document.getElementById("previousPhoto");
-let nextPhoto = document.getElementById("nextPhoto");
+let commentTemplate = document.querySelector("#commentTemplate");
+let commentOutput = document.querySelector("#commentOutput");
+let commentForm = document.querySelector("#commentForm");
+let commentName = document.querySelector("#commentName");
+let commentRating = document.querySelector("#commentRating");
+let commentText = document.querySelector("#commentText");
+let carouselImage = document.querySelector("#carouselImage");
+let carouselCounter = document.querySelector("#carouselCounter");
+let previousPhoto = document.querySelector("#previousPhoto");
+let nextPhoto = document.querySelector("#nextPhoto");
 
 // This is third party plugin from AOS library. It makes about page sections animate when scrolling
 
