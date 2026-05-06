@@ -57,12 +57,26 @@
             <div class="profile">
                 <div class="UIcrew cardsUI"> <!-- 2 classes-->
                     {{#each this}} <!-- take each element from existing array [ Not adjustable ]-->
-                    <div class="crewCard">
-                        <img src="{{image}}" alt="{{nickname}}">
+                    <!-- This card is still made by Handlebars -->
+                    <div class="crewCard" data-aos="zoom-in">
+                        <div class="crewCardHeader">
+                            <span class="crewFileLabel">CREW_FILE</span>
+                            <span class="crewSignal">ACTIVE</span>
+                        </div>
+
+                        <div class="crewPhotoFrame">
+                            <img src="{{image}}" alt="{{nickname}}">
+                        </div>
+
                         <div class="cardContent">
                             <h3><b>{{nickname}}</b></h3>
-                            <p>{{role}}</p>
-                            <p class="cardunderinfotext">{{info}}</p>
+                            <p class="crewRole">{{role}}</p>
+                            <p class="cardunderinfotext crewInfo">{{info}}</p>
+
+                            <div class="crewCardFooter">
+                                <span>EUROPA CREW</span>
+                                <span>OK</span>
+                            </div>
                         </div>
                     </div>
                     {{/each}} <!-- Stop Running array -->
