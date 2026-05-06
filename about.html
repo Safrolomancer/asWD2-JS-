@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Barotrauma</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -20,12 +21,93 @@
     </header>
 
     <main>
+        <!--======================ABOUT ABOUT ABOUT ABOUT SECTION 1=============================-->
+        <section id="aboutIntro" data-aos="fade-up">
+            <h1>Project Log</h1>
+            <p>
+                This website is my JavaScript assignment about Barotrauma. I used submarine data, crew cards and small
+                interactive systems to show that JavaScript can change the page, not only write static HTML.
+            </p>
+        </section>
+
+        <!--======================ABOUT PAGE SECTION 2====== CAROUSEL PHOT PHOTO PHOTO=======================-->
+        <!-- Photo carousel is second interaction on about page -->
+        <section id="aboutGallery" data-aos="fade-up">
+            <h2>Photo Carousel</h2>
+            <div class="carouselBox">
+                <!-- Counter text is changed from JS when click buttons -->
+                <p id="carouselCounter">Photo 1 / 9</p>
+                <!-- First image is just default image. JS changes src after next/previous -->
+                <img id="carouselImage" src="images/1.jpg" alt="Barotrauma numbered photo 1">
+
+                <div class="buttons">
+                    <!-- These ids are needed because JS takes these buttons and adds click events -->
+                    <button class="warningButton" id="previousPhoto" type="button">Previous</button>
+                    <button class="warningButton" id="nextPhoto" type="button">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!--======================ABOUT PAGE SECTION 3=============================-->
+        <!-- Comment form is rendered by Handlebars, newest comments go first -->
+        <!-- This part is for assignment page 3 comments array and form -->
+        <section id="aboutComments" data-aos="fade-up">
+            <h2>Captain Comments</h2>
+            <!-- Form values go to JS, then JS creates new comment object -->
+            <form id="commentForm" class="commentForm">
+                <label>
+                    Name
+                    <input id="commentName" type="text" placeholder="Captain name" required>
+                </label>
+
+                <label>
+                    Rating
+                    <select id="commentRating" required>
+                        <option value="Safe">Safe</option>
+                        <option value="Risky">Risky</option>
+                        <option value="Disaster">Disaster</option>
+                    </select>
+                </label>
+
+                <label class="wideInput">
+                    Comment
+                    <textarea id="commentText" placeholder="Write short comment about the project" required></textarea>
+                </label>
+
+                <button class="reactorButton" type="submit">Add Comment</button>
+            </form>
+
+            <div id="commentOutput"></div>
+
+<!--Handlebars puts comments here -->
+            <!-- I dont write comment cards manually, Handlebars repeats this template for every object -->
+            <script id="commentTemplate" type="text/x-handlebars-template">
+                {{#if hasComments}}
+                <div class="commentCards">
+                    {{#each comments}}
+                    <div class="commentCard">
+                        <h3>{{nickname}}</h3>
+                        <p><b>Rating:</b> {{rating}}</p>
+                        <p><b>Date:</b> {{date}}</p>
+                        <p>{{text}}</p>
+                    </div>
+                    {{/each}}
+                </div>
+                {{else}}
+                <p class="emptyDataMessage">No comments yet.</p>
+                {{/if}}
+            </script>
+        </section>
 
     </main>
 
     <footer>
         <p>Safrolomancer | github | JavaScript Assignment Matvii Krylov 20118691</p>
     </footer>
+ <!-- Handlebars is used here for comments, same library as data page -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+ <!-- Third party plugin for small scroll animation on about page -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="js/script.js"></script>
 </body>
 

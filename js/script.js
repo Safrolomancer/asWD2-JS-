@@ -385,3 +385,185 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
 //https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 //https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
+
+// ====================================================================================================
+// =========================== about.html =========== Comments and plugin==============================
+
+let projectComments = [    // this is array of objects for about.html comment section
+    //Just added template to llok it nice that it is not empty...
+{
+    "id": 1,
+    "nickname": "Safrolomancer",
+    "rating": "Risky",
+    "date": "2026-05-06",
+    "text": "This project is mostly about submarines, data and small JS systems."
+},
+
+{
+    "id": 2,
+    "nickname": "Registem",
+    "rating": "Safe",
+    "date": "2026-05-06",
+    "text": "The data page can add, delete, filter, sort and save submarine cards."
+},
+];
+
+//connected about.html ids with JS 
+let commentTemplate = document.getElementById("commentTemplate");
+let commentOutput = document.getElementById("commentOutput");
+let commentForm = document.getElementById("commentForm");
+let commentName = document.getElementById("commentName");
+let commentRating = document.getElementById("commentRating");
+let commentText = document.getElementById("commentText");
+let carouselImage = document.getElementById("carouselImage");
+let carouselCounter = document.getElementById("carouselCounter");
+let previousPhoto = document.getElementById("previousPhoto");
+let nextPhoto = document.getElementById("nextPhoto");
+
+// This is third party plugin from AOS library. It makes about page sections animate when scrolling
+
+//---------------------------------PLUGIN--------------------------------------------------------
+// I use this because assignment asks for third party JavaScript plugin
+//--------------------------------------------------------------------------------
+if (window.AOS) {
+    //check window.AOS first because plugin is only loaded on about.html
+    window.AOS.init({
+        "duration": 500,
+        "once": true
+    });
+}
+
+if (carouselImage && carouselCounter && previousPhoto && nextPhoto) {
+    // Put photos in the array cause it is easier than hrough if 
+    let carouselPhotos = [
+        {
+            "number": 1,
+            "src": "images/7.png",
+            "alt": "Barotrauma numbered photo 1"
+        },
+        {
+            "number": 2,
+            "src": "images/2.avif",
+            "alt": "Barotrauma numbered photo 2"
+        },
+        {
+            "number": 3,
+            "src": "images/3.jpg",
+            "alt": "Barotrauma numbered photo 3"
+        },
+        {
+            "number": 4,
+            "src": "images/4.avif",
+            "alt": "Barotrauma numbered photo 4"
+        },
+        {
+            "number": 5,
+            "src": "images/5.webp",
+            "alt": "Barotrauma numbered photo 5"
+        },
+        {
+            "number": 6,
+            "src": "images/6.avif",
+            "alt": "Barotrauma numbered photo 6"
+        },
+        {
+            "number": 7,
+            "src": "images/1.jpg",
+            "alt": "Barotrauma numbered photo 7"
+        },
+        {
+            "number": 8,
+            "src": "images/8.png",
+            "alt": "Barotrauma numbered photo 8"
+        },
+        {
+            "number": 9,
+            "src": "images/9.jpeg",
+            "alt": "Barotrauma numbered photo 9"
+        }
+    ];
+
+    //index 0 ---- not 1.... INDEX
+    let currentPhotoIndex = 0;
+
+    // this function changes image and number text in carousel
+    function renderCarouselPhoto() {
+        // currentPhoto is one object from my carouselPhotos array
+        let currentPhoto = carouselPhotos[currentPhotoIndex];
+
+        // Here JS really changes HTML image, so the page updates without reload
+        carouselImage.src = currentPhoto.src;
+        carouselImage.alt = currentPhoto.alt;
+        carouselCounter.textContent = "Photo " + currentPhoto.number + " / " + carouselPhotos.length;
+    }
+
+    previousPhoto.addEventListener("click", function () {
+        // minus one because user wants to see previous photo
+        currentPhotoIndex--;
+
+        if (currentPhotoIndex < 0) {
+            // if I am before first image, I send carousel to last image
+            currentPhotoIndex = carouselPhotos.length - 1;
+        }
+
+        renderCarouselPhoto();
+    });
+
+    nextPhoto.addEventListener("click", function () {
+        // plus one because user wants to see next photo
+        currentPhotoIndex++;
+
+        if (currentPhotoIndex >= carouselPhotos.length) {
+            // if I am after last image, I send carousel back to first image
+            currentPhotoIndex = 0;
+        }
+
+        renderCarouselPhoto();
+    });
+
+    // This call is needed to make sure first image and counter are correct from array
+    renderCarouselPhoto();
+}
+
+if (commentTemplate && commentOutput && window.Handlebars) {
+    // Same idea as submarine template, but now it is for about page comments
+    const commentSource = commentTemplate.innerHTML;
+    const commentCardTemplate = Handlebars.compile(commentSource);
+
+    // this function draws comments by Handlebars, same system as submarine cards
+    function renderComments() {
+        const commentCards = commentCardTemplate({
+            "comments": projectComments,
+            "hasComments": projectComments.length > 0
+        });
+
+        commentOutput.innerHTML = commentCards;
+    }
+
+    if (commentForm && commentName && commentRating && commentText) {
+        // submit adds new comment object and puts it first
+        commentForm.addEventListener("submit", function (event) {
+            // preventDefault stops page reload when I press Add Comment
+            event.preventDefault();
+
+            // This object takes form values and becomes new comment in my array
+            let newComment = {
+                "id": Date.now(),
+                "nickname": commentName.value.trim(),
+                "rating": commentRating.value,
+                "date": new Date().toLocaleDateString("en-IE"),
+                "text": commentText.value.trim()
+            };
+
+            projectComments.unshift(newComment); // unshift means new comment will be on top
+            // I clear form because comment is already added to array
+            commentForm.reset();
+            renderComments();
+        });
+    }
+
+    // Render comments when page opens, so starter comments are visible
+    renderComments();
+}
+// As part ov Project task ----- AOS plugin source:
+// https://michalsnik.github.io/aos/
