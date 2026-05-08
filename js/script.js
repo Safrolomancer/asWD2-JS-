@@ -5,13 +5,13 @@ let speed = 30; // 70 means mileseconds  = 0.07 ms
 let typeEffect = document.querySelector("#typeEffect");
 
 // just take a function 
-function typeText() {
+const typeText = () => {
     if (typeEffect && index < text.length) { // say that keep going until index != || < text.lenght 
         typeEffect.textContent += text[index]; // took element by id and add .textContent
         index++; // say to index to go on next letter was 0 became 1 was 1 became 2 etc
         setTimeout(typeText, speed); // says to use declared speed 
     }
-}
+};
 
 typeText(); // call my function. Because before we only declared but never called
 
@@ -25,7 +25,7 @@ let reactorBar = document.querySelector("#reactorBar");
 // When the button is clicked, JavaScript creates a random reactor power value.
 // Extra check needed because this JS file is also loaded on about.html and data.html
 if (reactorButton && reactorStatus && reactorBar) {
-    reactorButton.addEventListener("click", function () {
+    reactorButton.addEventListener("click", () => {
         let reactorPower = Math.floor(Math.random() * 46) + 55;
 
         // Change the green bar width to visually show the reactor power.
@@ -57,12 +57,12 @@ let textWarning = document.querySelector("#textWarning");
 // and we are using add && remove function when show or hide will be clicked 
 // Extra check needed because this JS file is also loaded on about.html and data.html
 if (show && hide && textWarning) {
-    show.addEventListener("click", function (){
+    show.addEventListener("click", () => {
         textWarning.classList.add("open");
         // action
     });
 
-    hide.addEventListener("click", function (){
+    hide.addEventListener("click", () => {
         textWarning.classList.remove("open");
         //action
     });
@@ -199,17 +199,17 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
     const submarineStorageKey = "barotraumaSubmarines"; // name for localStorage, like small save file in browser
 
     // localStorage keeps my array even after page reload
-    function saveSubmarines() {
+    const saveSubmarines = () => {
         if (window.localStorage) {
             // found it in WEEK 10 lab 
             // and on this page as well
 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
             window.localStorage.setItem(submarineStorageKey, JSON.stringify(submarines));
         }
-    }
+    };
 
     // load saved array from browser, but if nothing saved it keeps my first array
-    function loadSubmarines() {
+    const loadSubmarines = () => {
         if (window.localStorage) {
             let savedSubmarines = window.localStorage.getItem(submarineStorageKey);
 
@@ -217,10 +217,10 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
                 submarines = JSON.parse(savedSubmarines);
             }
         }
-    }
+    };
 
     // this is calculated feature for assignment, it counts data from my array
-    function updateSubmarineStats() {
+    const updateSubmarineStats = () => {
         if (totalSubmarines && averageDanger && averageCrew && mostDangerousSubmarine) {
             if (submarines.length === 0) {
                 totalSubmarines.textContent = "0";
@@ -234,7 +234,7 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
             let crewTotal = 0;
             let mostDangerous = submarines[0];
 
-            submarines.forEach(function (submarine) {
+            submarines.forEach((submarine) => {
                 dangerTotal += submarine.danger;
                 crewTotal += submarine.crew;
 
@@ -250,14 +250,14 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
             averageCrew.textContent = (crewTotal / submarines.length).toFixed(1);
             mostDangerousSubmarine.textContent = mostDangerous.name + " (" + mostDangerous.danger + "/10)";
         }
-    }
+    };
 
  //====================================================================================================
  //====================================================================================================
  //==================================================================================================== 
 
     // This function is needed because every add, delete, search or sort must draw cards again
-    function renderSubmarines() {
+    const renderSubmarines = () => {
         let searchText = "";
         let sortValue = "nameAsc";
 
@@ -275,7 +275,7 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
         //=-========REFERENCE-===========
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter#:~:text=array%20is%20returned.-,Description,included%20in%20the%20new%20array.
         //  it only makes list for screen
-        let visibleSubmarines = submarines.filter(function (submarine) {
+        let visibleSubmarines = submarines.filter((submarine) => {
             let nameText = submarine.name.toLowerCase();
             let classText = submarine.subClass.toLowerCase();
 
@@ -285,7 +285,7 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
         // sort is here for changing order on screen, so user can check data easier
         // so this function because it is not deleting something from array
         // it is just showing what is in filter 
-        visibleSubmarines.sort(function (firstSubmarine, secondSubmarine) {
+        visibleSubmarines.sort((firstSubmarine, secondSubmarine) => {
             if (sortValue === "nameAsc") {
                 return firstSubmarine.name.localeCompare(secondSubmarine.name);
             } else if (sortValue === "nameDesc") {
@@ -306,11 +306,11 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
 
         submarineOutput.innerHTML = submarineCards; // deployment for my data page HTML through inner
         updateSubmarineStats();
-    }
+    };
 
     if (submarineForm) {
         // submit is used because this is real form for adding new object to array
-        submarineForm.addEventListener("submit", function (event) {
+        submarineForm.addEventListener("submit", (event) => {
             event.preventDefault(); // to avoid reloading of my page 
             // found in https://www.w3schools.com/Jsref/event_preventdefault.asp
 
@@ -333,7 +333,7 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
 
     if (resetSubmarineData) {
         // reset brings back first data, because user can delete or add too much during testing
-        resetSubmarineData.addEventListener("click", function () {
+        resetSubmarineData.addEventListener("click", () => {
 
             submarines = firstSubmarineArray.slice(); //slice makes new copie of the array.
 
@@ -350,18 +350,20 @@ if (submarineTemplate && submarineOutput && window.Handlebars) {
         });
     }
 
-//====================DELETE DELETE DELETE DELTE =====================================================
+ //====================DELETE DELETE DELETE DELTE =====================================================
     // click is on output because delete buttons are created by Handlebars after page loads
-    submarineOutput.addEventListener("click", function (event) {
+    submarineOutput.addEventListener("click", (event) => {
         if (event.target.classList.contains("deleteSubmarineButton")) {
             //event.target element that I have just clicked. CLICKED because before was 
             //when I only pointed on text
-            let idToDelete = Number(event.target.dataset.id);
+            let idToDelete = Number(event.target.dataset.id); // saving as Str in dataset NUmber cause need int
             // delete uses id because two submarines can have same name
-            submarines = submarines.filter(function (submarine) {
+
+            //-----------------------------------------------------------------
+            submarines = submarines.filter((submarine) => {
                 // If it DOESN`T contain id it is staying in the array
                 //If submarine has the same value as button delete than this submarine doesnt adding in new array
-                return submarine.id !== idToDelete;
+                return submarine.id !== idToDelete;   // MAIN line for delete 
             });
 //render
             saveSubmarines(); // save after delete, so deleted card will stay deleted after reload
@@ -488,7 +490,7 @@ if (carouselImage && carouselCounter && previousPhoto && nextPhoto) {
     let currentPhotoIndex = 0;
 
     // this function changes image and number text in carousel
-    function renderCarouselPhoto() {
+    const renderCarouselPhoto = () => {
         // currentPhoto is one object from my carouselPhotos array
         let currentPhoto = carouselPhotos[currentPhotoIndex];
 
@@ -496,9 +498,9 @@ if (carouselImage && carouselCounter && previousPhoto && nextPhoto) {
         carouselImage.src = currentPhoto.src;
         carouselImage.alt = currentPhoto.alt;
         carouselCounter.textContent = "Photo " + currentPhoto.number + " / " + carouselPhotos.length;
-    }
+    };
 
-    previousPhoto.addEventListener("click", function () {
+    previousPhoto.addEventListener("click", () => {
         // minus one because user wants to see previous photo
         currentPhotoIndex--;
 
@@ -510,7 +512,7 @@ if (carouselImage && carouselCounter && previousPhoto && nextPhoto) {
         renderCarouselPhoto();
     });
 
-    nextPhoto.addEventListener("click", function () {
+    nextPhoto.addEventListener("click", () => {
         // plus one because user wants to see next photo
         currentPhotoIndex++;
 
@@ -532,18 +534,18 @@ if (commentTemplate && commentOutput && window.Handlebars) {
     const commentCardTemplate = Handlebars.compile(commentSource);
 
     // this function draws comments by Handlebars, same system as submarine cards
-    function renderComments() {
+    const renderComments = () => {
         const commentCards = commentCardTemplate({
             "comments": projectComments,
             "hasComments": projectComments.length > 0
         });
 
         commentOutput.innerHTML = commentCards;
-    }
+    };
 
     if (commentForm && commentName && commentRating && commentText) {
         // submit adds new comment object and puts it first
-        commentForm.addEventListener("submit", function (event) {
+        commentForm.addEventListener("submit", (event) => {
             // preventDefault stops page reload when I press Add Comment
             event.preventDefault();
 
