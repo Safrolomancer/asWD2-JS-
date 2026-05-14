@@ -5,7 +5,5 @@ The project demonstrates JavaScript interactivity, dynamic data rendering, array
 
 ## Live Website
 
-Add your deployed GitHub Pages link here:
-
 ```text
 https://safrolomancer.github.io/asWD2-JS-/
